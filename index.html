@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I.E.P. La Merced | Inicial y Primaria en Villa María del Triunfo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR INSTITUCIONAL -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <div class="topbar-left">
+                <span><i class="fa-solid fa-location-dot"></i> Av. El Triunfo N.° 1250, Villa María del Triunfo</span>
+                <span><i class="fa-solid fa-clock"></i> Lunes a Viernes: 7:45 a.m. - 3:30 p.m.</span>
+            </div>
+            <div class="topbar-right">
+                <span>Cód. Modular: 1778091 (UGEL 01)</span>
+                <a href="pensiones.html" class="topbar-link"><i class="fa-solid fa-mobile-screen-button"></i> Pagos Yape en Línea</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CABECERA Y MENÚ PRINCIPAL -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-shield">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-sub">INSTITUCIÓN EDUCATIVA PARTICULAR</span>
+                    <span class="logo-main">LA MERCED</span>
+                </div>
+            </a>
+
+            <nav class="nav" id="mainNav">
+                <a href="#inicio">Inicio</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#niveles">Niveles</a>
+                <a href="#propuesta">Propuesta</a>
+                <a href="#admision">Admisión y Pensiones</a>
+                <a href="matricula.html" class="btn-matricula">Separar Vacante</a>
+                <button onclick="openLoginModal()" class="btn-intranet">
+                    <i class="fa-solid fa-user-lock"></i> Intranet
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BANNER PRINCIPAL (HERO) -->
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-box">
+                <span class="hero-tag">ADMISIÓN ABIERTA • INICIAL Y PRIMARIA</span>
+                <h1>Educación en valores con <span>atención personalizada</span> para tus hijos</h1>
+                <p>En la I.E.P. La Merced trabajamos con grupos reducidos por aula para garantizar el acompañamiento académico, emocional y formativo que cada niño necesita en Villa María del Triunfo.</p>
+                <div class="hero-buttons">
+                    <a href="matricula.html" class="btn-gold"><i class="fa-solid fa-file-pen"></i> Pre-Matrícula en Línea</a>
+                    <a href="#admision" class="btn-white-outline"><i class="fa-solid fa-circle-info"></i> Ver Costos y Requisitos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARJETAS DE DIFERENCIALES RÁPIDOS -->
+    <section class="highlights">
+        <div class="container highlights-grid">
+            <div class="highlight-item">
+                <div class="hl-icon"><i class="fa-solid fa-users-rectangle"></i></div>
+                <div>
+                    <h3>Aulas con Grupos Reducidos</h3>
+                    <p>Dedicación exclusiva del docente para asegurar que ningún alumno se quede atrás.</p>
+                </div>
+            </div>
+            <div class="highlight-item">
+                <div class="hl-icon"><i class="fa-solid fa-Hands-holding-child"></i><i class="fa-solid fa-heart-pulse"></i></div>
+                <div>
+                    <h3>Tutoría y Psicología</h3>
+                    <p>Orientación continua al estudiante y escuela de padres durante todo el año escolar.</p>
+                </div>
+            </div>
+            <div class="highlight-item">
+                <div class="hl-icon"><i class="fa-solid fa-laptop-file"></i></div>
+                <div>
+                    <h3>Intranet para Familias</h3>
+                    <p>Consulta de notas, asistencia diaria, comunicados oficiales y pagos con Yape desde tu celular.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN NOSOTROS Y PALABRAS DE LA DIRECCIÓN -->
+    <section id="nosotros" class="section">
+        <div class="container about-grid">
+            <div class="about-images">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="Estudiantes en aula I.E.P. La Merced" class="img-main">
+                <div class="experience-badge">
+                    <strong>Desde 2016</strong>
+                    <span>Formando con vocación en Lima Sur</span>
+                </div>
+            </div>
+
+            <div class="about-text">
+                <span class="sub-heading">Bienvenidos a Nuestra Familia Mercedaria</span>
+                <h2>Comprometidos con el futuro de la niñez en Villa María del Triunfo</h2>
+                <p>Desde nuestra fundación en setiembre de 2016, la <strong>I.E.P. La Merced</strong> nació con el firme propósito de brindar a las familias de nuestra comunidad una educación privada de calidad, cercana y con pensiones accesibles.</p>
+                <p>Contamos con local propio y ambientes seguros donde fortalecemos las competencias de Comunicación y Matemática, cultivando el respeto, la responsabilidad, la honestidad y la solidaridad en cada uno de nuestros estudiantes.</p>
+
+                <div class="mission-vision-boxes">
+                    <div class="mv-box">
+                        <h4><i class="fa-solid fa-compass"></i> Nuestra Misión</h4>
+                        <p>Brindar una formación integral en Inicial y Primaria con grupos reducidos y atención personalizada, fortaleciendo competencias y valores de la mano con las familias.</p>
+                    </div>
+                    <div class="mv-box">
+                        <h4><i class="fa-solid fa-star"></i> Nuestra Visión al 2030</h4>
+                        <p>Ser reconocidos en Lima Sur como un colegio líder y de confianza por la calidad de su acompañamiento al estudiante, cercanía familiar y gestión moderna.</p>
+                    </div>
+                </div>
+
+                <div class="directors-signature">
+                    <div>
+                        <strong>Prof. Carlos Percy Gálvez Castro</strong>
+                        <span>Director Pedagógico</span>
+                    </div>
+                    <div>
+                        <strong>Sra. Gina Sue Narváez López</strong>
+                        <span>Gerente General / Promotoría</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NIVELES EDUCATIVOS -->
+    <section id="niveles" class="section bg-cream">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-heading">Formación Básica Regular</span>
+                <h2>Nuestros Niveles Educativos</h2>
+                <p>Enseñanza presencial en turno mañana con seguimiento permanente del logro de aprendizaje.</p>
+            </div>
+
+            <div class="levels-grid">
+                <div class="level-card">
+                    <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=700&q=80" alt="Nivel Inicial">
+                    <div class="level-body">
+                        <span class="level-tag">3, 4 y 5 Años</span>
+                        <h3>Educación Inicial</h3>
+                        <p>Estimulación oportuna, desarrollo psicomotriz, socialización y aprestamiento para la lectoescritura mediante el juego y la exploración guiada.</p>
+                        <ul class="level-list">
+                            <li><i class="fa-solid fa-check"></i> Desarrollo de autonomía y habilidades sociales</li>
+                            <li><i class="fa-solid fa-check"></i> Iniciación lúdica a la matemática y lectura</li>
+                            <li><i class="fa-solid fa-check"></i> Reporte diario de actividades a los padres</li>
+                        </ul>
+                        <a href="matricula.html" class="btn-card">Solicitar Vacante en Inicial</a>
+                    </div>
+                </div>
+
+                <div class="level-card">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=80" alt="Nivel Primaria">
+                    <div class="level-body">
+                        <span class="level-tag">1.° a 6.° Grado</span>
+                        <h3>Educación Primaria</h3>
+                        <p>Sólida base académica con énfasis en comprensión lectora, razonamiento matemático, valores ciudadanos y hábitos de estudio.</p>
+                        <ul class="level-list">
+                            <li><i class="fa-solid fa-check"></i> Reforzamiento continuo en Matemática y Comunicación</li>
+                            <li><i class="fa-solid fa-check"></i> Evaluación por competencias según el Currículo Nacional</li>
+                            <li><i class="fa-solid fa-check"></i> Tutoría personalizada y orientación psicológica</li>
+                        </ul>
+                        <a href="matricula.html" class="btn-card">Solicitar Vacante en Primaria</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLATAFORMA DIGITAL Y SERVICIOS EN LÍNEA (CONEXIÓN CON LOS MÓDULOS DEL GRUPO) -->
+    <section id="propuesta" class="section">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-heading">Colegio Conectado con las Familias</span>
+                <h2>Servicios Digitales de Nuestra Intranet</h2>
+                <p>Ponemos a disposición de nuestra comunidad educativa accesos rápidos para trámites, seguimiento académico y pagos en línea.</p>
+            </div>
+
+            <div class="services-grid">
+                <a href="padres.html" class="service-box">
+                    <div class="srv-icon"><i class="fa-solid fa-bell"></i></div>
+                    <h3>Portal de Padres y Comunicados</h3>
+                    <p>Revisa citaciones, avisos de Dirección, asistencia diaria y el avance académico de tu menor hijo.</p>
+                    <span class="srv-link">Ingresar al Portal Familiar <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="pensiones.html" class="service-box">
+                    <div class="srv-icon"><i class="fa-solid fa-qrcode"></i></div>
+                    <h3>Pago de Pensiones con Yape</h3>
+                    <p>Consulta tu estado de cuenta al día y registra tus pagos mensuales de forma rápida y sin colas.</p>
+                    <span class="srv-link">Ir a Pagos en Línea <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="matricula.html" class="service-box">
+                    <div class="srv-icon"><i class="fa-solid fa-file-Export"></i><i class="fa-solid fa-file-contract"></i></div>
+                    <h3>Matrícula y Constancias</h3>
+                    <p>Realiza tu pre-matrícula virtual o solicita constancias de matrícula y estudio en formato digital.</p>
+                    <span class="srv-link">Iniciar Trámite Virtual <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="docente.html" class="service-box">
+                    <div class="srv-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <h3>Aula Docente y Libretas</h3>
+                    <p>Acceso exclusivo para profesores: control de asistencia diaria, registro de calificaciones y actas oficiales.</p>
+                    <span class="srv-link">Acceso Personal Docente <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMISIÓN Y TRANSPARENCIA ECONÓMICA (ESTILO INDECOPI COLEGIOS PERÚ) -->
+    <section id="admision" class="section bg-navy">
+        <div class="container admision-grid">
+            <div class="admision-info">
+                <span class="sub-heading gold-text">Proceso de Admisión</span>
+                <h2>Inversión Educativa Transparente y al Alcance de tu Familia</h2>
+                <p>En cumplimiento con las disposiciones de transparencia para instituciones educativas privadas, informamos nuestras tarifas oficiales para los niveles de Inicial y Primaria:</p>
+                
+                <div class="Requirements-box">
+                    <h4><i class="fa-solid fa-clipboard-check"></i> Requisitos de Matrícula:</h4>
+                    <ul>
+                        <li>Copia del DNI del estudiante y de los padres o apoderados.</li>
+                        <li>Ficha única de matrícula generada en SIAGIE y libreta de notas (traslados).</li>
+                        <li>Constancia de no adeudo del colegio de procedencia.</li>
+                    </ul>
+                </div>
+
+                <div class=" sibling-benefit">
+                    <i class="fa-solid fa-people-group"></i>
+                    <div>
+                        <strong>Beneficio para Familias:</strong> Consulta por nuestros descuentos especiales para hermanos matriculados en la institución.
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <span>TARIFARIO OFICIAL • INICIAL Y PRIMARIA</span>
+                    <h3>Costos Educativos</h3>
+                </div>
+                <div class="pricing-body">
+                    <div class="price-row">
+                        <div>
+                            <strong>Cuota de Matrícula Anual</strong>
+                            <span>Pago único al iniciar el año escolar</span>
+                        </div>
+                        <div class="amount">S/ 30.00</div>
+                    </div>
+                    <div class="price-row">
+                        <div>
+                            <strong>Pensión de Enseñanza</strong>
+                            <span>Mensualidad (marzo a diciembre)</span>
+                        </div>
+                        <div class="amount">S/ 310.00</div>
+                    </div>
+                    <div class="price-row">
+                        <div>
+                            <strong>Cuota de Ingreso</strong>
+                            <span>Para alumnos nuevos</span>
+                        </div>
+                        <div class="amount free">S/ 0.00 (Exonerado)</div>
+                    </div>
+
+                    <div class="payment-methods-banner">
+                        <span>Medios de pago autorizados:</span>
+                        <strong><i class="fa-solid fa-mobile-screen"></i> Yape / Transferencia / Secretaría</strong>
+                    </div>
+
+                    <a href="matricula.html" class="btn-gold btn-full">Registrar Pre-Matrícula Ahora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE INTRANET (ESTILO CUBICOL / SIEWEB) -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            <div class="modal-top">
+                <div class="logo-shield small-shield"><i class="fa-solid fa-graduation-cap"></i></div>
+                <h3>Intranet I.E.P. La Merced</h3>
+                <p>Seleccione su perfil para ingresar al sistema escolar</p>
+            </div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label for="roleSelect">Perfil de Usuario</label>
+                    <select id="roleSelect" required onchange="fillDemoCredentials()">
+                        <option value="padres">Familia / Apoderado</option>
+                        <option value="docente">Personal Docente</option>
+                        <option value="pensiones">Tesorería y Pagos</option>
+                        <option value="matricula">Secretaría Académica</option>
+                        <option value="admin">Dirección y Promotoría</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="userInput">Usuario o Correo Institucional</label>
+                    <input type="text" id="userInput" value="familia.apoderado@colegiolamerced.edu.pe" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="passInput">Contraseña</label>
+                    <input type="password" id="passInput" value="12345678" required>
+                </div>
+
+                <div class="privacy-notice">
+                    <input type="checkbox" id="lawCheck" checked required>
+                    <label for="lawCheck">Autorizo el tratamiento de datos personales conforme a la Ley N.° 29733.</label>
+                </div>
+
+                <button type="submit" class="btn-intranet btn-full">Ingresar al Aula Virtual</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE DE INFORMES (TÍPICO EN COLEGIOS DE PERÚ) -->
+    <a href="matricula.html" class="floating-admision" title="Solicitar vacante en línea">
+        <i class="fa-solid fa-comments"></i>
+        <span>Admisión en Línea</span>
+    </a>
+
+    <!-- PIE DE PÁGINA OFICIAL -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>I.E.P. LA MERCED</h4>
+                <p>Formación integral en los niveles de Inicial y Primaria con enseñanza personalizada y sólidos valores en Villa María del Triunfo.</p>
+                <p class="ruc-text"><strong>Razón Social:</strong> Corporación Educativa La Merced S.R.L.<br><strong>RUC:</strong> 20601528631</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Accesos Rápidos</h4>
+                <ul>
+                    <li><a href="matricula.html">Admisión y Pre-Matrícula</a></li>
+                    <li><a href="padres.html">Portal de Padres de Familia</a></li>
+                    <li><a href="pensiones.html">Pagos de Pensiones con Yape</a></li>
+                    <li><a href="docente.html">Intranet Docente</a></li>
+                    <li><a href="admin-cloud.html">Panel Directivo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contacto y Ubicación</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Av. El Triunfo N.° 1250, Mz. I, Lote 18 – Villa María del Triunfo, Lima</p>
+                <p><i class="fa-solid fa-building-flag"></i> Jurisdicción: UGEL 01 – San Juan de Miraflores</p>
+                <p><i class="fa-solid fa-shield-halved"></i> Protegido bajo la Ley N.° 29733 de Datos Personales</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 I.E.P. La Merced – Corporación Educativa La Merced S.R.L. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

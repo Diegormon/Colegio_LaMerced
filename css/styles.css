@@ -1,0 +1,811 @@
+:root {
+    --burgundy: #7c1623;       /* Guinda Mercedario tradicional */
+    --burgundy-dark: #580e18;
+    --navy: #112240;           /* Azul Marino Institucional */
+    --gold: #d97706;           /* Dorado cálido */
+    --gold-bright: #f59e0b;
+    --cream: #fdfbf7;          /* Fondo cálido escolar */
+    --text-dark: #1f2937;
+    --text-gray: #4b5563;
+    --border-light: #e5e7eb;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, .logo-main, .btn-matricula, .btn-intranet, .btn-gold {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* TOPBAR */
+.topbar {
+    background-color: var(--navy);
+    color: #e2e8f0;
+    font-size: 0.82rem;
+    padding: 0.45rem 0;
+}
+
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.topbar-left span {
+    margin-right: 1.2rem;
+}
+
+.topbar i {
+    color: var(--gold-bright);
+    margin-right: 0.3rem;
+}
+
+.topbar-link {
+    color: #fde68a;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+/* HEADER */
+.header {
+    background: var(--white);
+    border-bottom: 3px solid var(--burgundy);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 82px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+}
+
+.logo-shield {
+    width: 48px;
+    height: 48px;
+    background: var(--burgundy);
+    color: var(--white);
+    border: 2px solid var(--gold-bright);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+}
+
+.logo-sub {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-gray);
+    letter-spacing: 0.5px;
+}
+
+.logo-main {
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--burgundy);
+    line-height: 1.1;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: color 0.2s;
+}
+
+.nav a:hover {
+    color: var(--burgundy);
+}
+
+.btn-matricula {
+    background-color: var(--gold-bright);
+    color: var(--navy) !important;
+    padding: 0.55rem 1.1rem;
+    border-radius: 6px;
+    font-weight: 700 !important;
+}
+
+.btn-intranet {
+    background-color: var(--burgundy);
+    color: var(--white);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: background 0.2s;
+}
+
+.btn-intranet:hover {
+    background-color: var(--burgundy-dark);
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(17, 34, 64, 0.92) 0%, rgba(124, 22, 35, 0.78) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-box {
+    max-width: 650px;
+    color: var(--white);
+}
+
+.hero-tag {
+    display: inline-block;
+    background: var(--gold-bright);
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.hero-box h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.1rem;
+}
+
+.hero-box h1 span {
+    color: #fde047;
+}
+
+.hero-box p {
+    font-size: 1.08rem;
+    color: #f1f5f9;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-gold {
+    background: var(--gold-bright);
+    color: var(--navy);
+    text-decoration: none;
+    padding: 0.85rem 1.6rem;
+    border-radius: 6px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-white-outline {
+    border: 2px solid var(--white);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.85rem 1.6rem;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* HIGHLIGHTS BAR */
+.highlights {
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.2rem;
+}
+
+.highlight-item {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-top: 4px solid var(--burgundy);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.hl-icon {
+    font-size: 1.8rem;
+    color: var(--burgundy);
+}
+
+.highlight-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+    color: var(--navy);
+}
+
+.highlight-item p {
+    font-size: 0.88rem;
+    color: var(--text-gray);
+}
+
+/* SECCIÓN NOSOTROS */
+.section {
+    padding: 4.5rem 0;
+}
+
+.bg-cream {
+    background-color: var(--cream);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-images {
+    position: relative;
+}
+
+.img-main {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    background: var(--burgundy);
+    color: var(--white);
+    padding: 1rem 1.4rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.experience-badge strong {
+    display: block;
+    font-size: 1.3rem;
+    color: #fde047;
+}
+
+.experience-badge span {
+    font-size: 0.8rem;
+}
+
+.sub-heading {
+    display: inline-block;
+    color: var(--burgundy);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.4rem;
+}
+
+.about-text h2, .section-title h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.25;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    color: var(--text-gray);
+}
+
+.mission-vision-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.mv-box {
+    background: var(--cream);
+    padding: 1.1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--gold-bright);
+}
+
+.mv-box h4 {
+    color: var(--navy);
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+}
+
+.mv-box p {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.directors-signature {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.directors-signature strong {
+    display: block;
+    font-size: 0.92rem;
+    color: var(--navy);
+}
+
+.directors-signature span {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+}
+
+/* NIVELES */
+.section-title {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 3rem;
+}
+
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+}
+
+.level-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.level-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.level-body {
+    padding: 1.8rem;
+}
+
+.level-tag {
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+}
+
+.level-body h3 {
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin: 0.6rem 0;
+}
+
+.level-list {
+    list-style: none;
+    margin: 1.2rem 0 1.5rem;
+    font-size: 0.9rem;
+}
+
+.level-list li {
+    margin-bottom: 0.45rem;
+}
+
+.level-list i {
+    color: var(--burgundy);
+    margin-right: 0.4rem;
+}
+
+.btn-card {
+    display: block;
+    text-align: center;
+    background: var(--navy);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.btn-card:hover {
+    background: var(--burgundy);
+}
+
+/* SERVICIOS DE INTRANET */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.service-box {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    padding: 1.8rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-box:hover {
+    border-color: var(--burgundy);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(124, 22, 35, 0.1);
+}
+
+.srv-icon {
+    width: 50px;
+    height: 50px;
+    background: #fce7f3;
+    color: var(--burgundy);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.service-box h3 {
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+}
+
+.service-box p {
+    font-size: 0.88rem;
+    color: var(--text-gray);
+    margin-bottom: 1.2rem;
+}
+
+.srv-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--burgundy);
+}
+
+/* ADMISIÓN Y PENSIONES */
+.bg-navy {
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+.gold-text {
+    color: var(--gold-bright);
+}
+
+.admision-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.admision-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.Requirements-box {
+    background: rgba(255,255,255,0.06);
+    padding: 1.3rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.Requirements-box h4 {
+    color: #fde047;
+    margin-bottom: 0.6rem;
+}
+
+.Requirements-box ul {
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+}
+
+.sibling-benefit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid var(--gold-bright);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.sibling-benefit i {
+    font-size: 1.6rem;
+    color: var(--gold-bright);
+}
+
+.pricing-card {
+    background: var(--white);
+    color: var(--text-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.pricing-header {
+    background: var(--burgundy);
+    color: var(--white);
+    padding: 1.4rem;
+    text-align: center;
+}
+
+.pricing-header span {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #fde68a;
+}
+
+.pricing-body {
+    padding: 1.8rem;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.price-row strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--navy);
+}
+
+.price-row span {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+}
+
+.amount {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--burgundy);
+}
+
+.amount.free {
+    font-size: 1rem;
+    color: #16a34a;
+}
+
+.payment-methods-banner {
+    background: var(--cream);
+    padding: 0.8rem;
+    border-radius: 6px;
+    text-align: center;
+    margin: 1.2rem 0;
+    font-size: 0.85rem;
+}
+
+.payment-methods-banner strong {
+    display: block;
+    color: var(--navy);
+}
+
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+/* MODAL INTRANET */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 34, 64, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 1rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-card {
+    background: var(--white);
+    width: 100%;
+    max-width: 430px;
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    border-top: 5px solid var(--burgundy);
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.modal-top {
+    text-align: center;
+    margin-bottom: 1.4rem;
+}
+
+.small-shield {
+    margin: 0 auto 0.6rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.84rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.92rem;
+}
+
+.privacy-notice {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    font-size: 0.78rem;
+    color: var(--text-gray);
+    margin: 1rem 0 1.3rem;
+}
+
+/* BOTÓN FLOTANTE */
+.floating-admision {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    background: #16a34a;
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 90;
+}
+
+/* FOOTER */
+.footer {
+    background: #0a1526;
+    color: #cbd5e1;
+    padding: 3.5rem 0 1.5rem;
+    font-size: 0.88rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer h4 {
+    color: var(--white);
+    margin-bottom: 0.9rem;
+    border-left: 3px solid var(--gold-bright);
+    padding-left: 0.6rem;
+}
+
+.ruc-text {
+    margin-top: 0.8rem;
+    color: #94a3b8;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li {
+    margin-bottom: 0.45rem;
+}
+
+.footer ul a {
+    color: #cbd5e1;
+    text-decoration: none;
+}
+
+.footer ul a:hover {
+    color: var(--gold-bright);
+}
+
+.footer-bottom {
+    border-top: 1px solid #1e293b;
+    padding-top: 1.2rem;
+    text-align: center;
+    color: #64748b;
+}
+
+@media (max-width: 860px) {
+    .about-grid, .admision-grid { grid-template-columns: 1fr; }
+    .nav a:not(.btn-matricula) { display: none; }
+}
