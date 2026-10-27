@@ -1,10 +1,10 @@
 :root {
-    --burgundy: #7c1623;       /* Guinda Mercedario tradicional */
+    --burgundy: #7c1623;
     --burgundy-dark: #580e18;
-    --navy: #112240;           /* Azul Marino Institucional */
-    --gold: #d97706;           /* Dorado cálido */
+    --navy: #112240;
+    --gold: #d97706;
     --gold-bright: #f59e0b;
-    --cream: #fdfbf7;          /* Fondo cálido escolar */
+    --cream: #fdfbf7;
     --text-dark: #1f2937;
     --text-gray: #4b5563;
     --border-light: #e5e7eb;
@@ -122,14 +122,14 @@ h1, h2, h3, h4, .logo-main, .btn-matricula, .btn-intranet, .btn-gold {
 .nav {
     display: flex;
     align-items: center;
-    gap: 1.3rem;
+    gap: 1.2rem;
 }
 
 .nav a {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 600;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     transition: color 0.2s;
 }
 
@@ -662,7 +662,51 @@ h1, h2, h3, h4, .logo-main, .btn-matricula, .btn-intranet, .btn-gold {
     justify-content: center;
 }
 
-/* MODAL INTRANET */
+/* MAPA Y CONTACTO */
+.map-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 2.5rem;
+    align-items: stretch;
+}
+
+.contact-card-info {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.contact-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    align-items: flex-start;
+}
+
+.contact-item i {
+    width: 40px;
+    height: 40px;
+    background: #fef2f2;
+    color: var(--burgundy);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.map-frame {
+    width: 100%;
+    min-height: 360px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--border-light);
+}
+
+/* MODALES (INTRANET, YAPE QR, LIBRO DE RECLAMACIONES) */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -681,11 +725,13 @@ h1, h2, h3, h4, .logo-main, .btn-matricula, .btn-intranet, .btn-gold {
 .modal-card {
     background: var(--white);
     width: 100%;
-    max-width: 430px;
+    max-width: 450px;
     border-radius: 12px;
     padding: 2rem;
     position: relative;
     border-top: 5px solid var(--burgundy);
+    max-height: 92vh;
+    overflow-y: auto;
 }
 
 .modal-close {
@@ -700,7 +746,7 @@ h1, h2, h3, h4, .logo-main, .btn-matricula, .btn-intranet, .btn-gold {
 
 .modal-top {
     text-align: center;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
 }
 
 .small-shield {
@@ -708,22 +754,23 @@ h1, h2, h3, h4, .logo-main, .btn-matricula, .btn-intranet, .btn-gold {
 }
 
 .input-group {
-    margin-bottom: 1rem;
+    margin-bottom: 0.9rem;
 }
 
 .input-group label {
     display: block;
-    font-size: 0.84rem;
+    font-size: 0.83rem;
     font-weight: 600;
     margin-bottom: 0.3rem;
 }
 
-.input-group input, .input-group select {
+.input-group input, .input-group select, .input-group textarea {
     width: 100%;
-    padding: 0.65rem 0.85rem;
+    padding: 0.62rem 0.85rem;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
+    font-family: inherit;
 }
 
 .privacy-notice {
@@ -732,26 +779,102 @@ h1, h2, h3, h4, .logo-main, .btn-matricula, .btn-intranet, .btn-gold {
     align-items: flex-start;
     font-size: 0.78rem;
     color: var(--text-gray);
-    margin: 1rem 0 1.3rem;
+    margin: 0.9rem 0 1.2rem;
 }
 
-/* BOTÓN FLOTANTE */
-.floating-admision {
+/* WIDGET INTELIGENTE DE WHATSAPP (REDIRECCIÓN AL PORTAL) */
+.wa-floating-btn {
     position: fixed;
     bottom: 22px;
     right: 22px;
-    background: #16a34a;
+    background: #25d366;
     color: var(--white);
-    text-decoration: none;
-    padding: 0.8rem 1.2rem;
+    border: none;
+    padding: 0.85rem 1.3rem;
     border-radius: 50px;
     font-weight: 700;
-    font-size: 0.9rem;
-    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.35);
+    font-size: 0.92rem;
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.4);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    z-index: 90;
+    gap: 0.55rem;
+    cursor: pointer;
+    z-index: 95;
+}
+
+.wa-chat-popup {
+    position: fixed;
+    bottom: 85px;
+    right: 22px;
+    width: 340px;
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: none;
+    z-index: 96;
+    border: 1px solid var(--border-light);
+}
+
+.wa-chat-popup.active {
+    display: block;
+}
+
+.wa-header {
+    background: #075e54;
+    color: var(--white);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wa-body {
+    background: #ece5dd;
+    padding: 1rem;
+    font-size: 0.84rem;
+}
+
+.wa-bubble {
+    background: var(--white);
+    padding: 0.85rem;
+    border-radius: 0 10px 10px 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 0.8rem;
+}
+
+.wa-actions a {
+    display: block;
+    text-align: center;
+    background: #128c7e;
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.55rem;
+    border-radius: 6px;
+    font-weight: 700;
+    margin-top: 0.45rem;
+    font-size: 0.82rem;
+}
+
+/* LIBRO DE RECLAMACIONES BOTÓN FOOTER */
+.libro-reclamaciones-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid #475569;
+    color: var(--white);
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 0.8rem;
+    font-size: 0.82rem;
+    text-align: left;
+}
+
+.libro-reclamaciones-btn i {
+    font-size: 1.5rem;
+    color: var(--gold-bright);
 }
 
 /* FOOTER */
@@ -806,6 +929,6 @@ h1, h2, h3, h4, .logo-main, .btn-matricula, .btn-intranet, .btn-gold {
 }
 
 @media (max-width: 860px) {
-    .about-grid, .admision-grid { grid-template-columns: 1fr; }
+    .about-grid, .admision-grid, .map-grid { grid-template-columns: 1fr; }
     .nav a:not(.btn-matricula) { display: none; }
 }

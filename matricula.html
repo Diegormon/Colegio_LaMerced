@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admisión y Secretaría Académica | I.E.P. La Merced</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/intranet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="intranet-body">
+
+    <header class="intra-topbar">
+        <a href="index.html" class="intra-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div>
+                <strong>I.E.P. LA MERCED</strong>
+                <span>Admisión en Línea y Secretaría Académica</span>
+            </div>
+        </a>
+        <nav class="role-switcher">
+            <a href="matricula.html" class="active"><i class="fa-solid fa-file-signature"></i> Matrícula</a>
+            <a href="padres.html"><i class="fa-solid fa-people-roof"></i> Portal Padres</a>
+            <a href="docente.html"><i class="fa-solid fa-chalkboard-user"></i> Aula Docente</a>
+            <a href="pensiones.html"><i class="fa-solid fa-coins"></i> Tesorería / Yape</a>
+            <a href="admin-cloud.html"><i class="fa-solid fa-chart-pie"></i> Dirección</a>
+            <a href="index.html" class="btn-exit"><i class="fa-solid fa-house"></i> Web Pública</a>
+        </nav>
+    </header>
+
+    <main class="intra-layout">
+        <div class="page-header">
+            <div>
+                <h1>Proceso de Matrícula en Línea y Emisión Documental</h1>
+                <p>Todo alumno matriculado se sincroniza automáticamente con el Aula Docente, SIAGIE y Tesorería.</p>
+            </div>
+            <div>
+                <span class="badge badge-paid"><i class="fa-solid fa-circle-check"></i> Vacantes Abiertas: Inicial y Primaria</span>
+            </div>
+        </div>
+
+        <div class="panel-grid">
+            <!-- FORMULARIO DE PRE-MATRÍCULA -->
+            <div class="panel-card">
+                <h3><span><i class="fa-solid fa-user-plus"></i> Ficha Única de Matrícula en Línea</span> <small>Matrícula: S/ 30.00</small></h3>
+                <form id="formMatricula" onsubmit="registrarMatriculaReal(event)">
+                    <div class="form-grid-2">
+                        <div class="input-group">
+                            <label>Nombres y Apellidos del Estudiante</label>
+                            <input type="text" id="estNombre" placeholder="Ej. Mateo Quispe Rojas" required>
+                        </div>
+                        <div class="input-group">
+                            <label>DNI del Estudiante</label>
+                            <input type="text" id="estDni" maxlength="8" placeholder="8 dígitos" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="input-group">
+                            <label>Nivel y Grado al que postula</label>
+                            <select id="estGrado" required>
+                                <option value="Inicial - 3 Años">Inicial - 3 Años</option>
+                                <option value="Inicial - 4 Años">Inicial - 4 Años</option>
+                                <option value="Inicial - 5 Años">Inicial - 5 Años</option>
+                                <option value="1.° Grado de Primaria" selected>1.° Grado de Primaria</option>
+                                <option value="2.° Grado de Primaria">2.° Grado de Primaria</option>
+                                <option value="3.° Grado de Primaria">3.° Grado de Primaria</option>
+                                <option value="4.° Grado de Primaria">4.° Grado de Primaria</option>
+                                <option value="5.° Grado de Primaria">5.° Grado de Primaria</option>
+                                <option value="6.° Grado de Primaria">6.° Grado de Primaria</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Estado de Cuota de Primera Pensión (S/ 310)</label>
+                            <select id="estEstadoPension">
+                                <option value="Por Conciliar">Pendiente de Pago (Por Conciliar en Tesorería)</option>
+                                <option value="Conciliado">Pagado con Yape al Matricular</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="input-group">
+                            <label>Padre / Madre o Apoderado</label>
+                            <input type="text" id="apoNombre" placeholder="Nombre completo del apoderado" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Celular de Contacto</label>
+                            <input type="tel" id="apoCelular" placeholder="999 888 777" required>
+                        </div>
+                    </div>
+
+                    <div class="privacy-notice">
+                        <input type="checkbox" checked required>
+                        <label>Autorizo el registro de datos del menor conforme a la Ley N.° 29733 de Protección de Datos Personales.</label>
+                    </div>
+
+                    <button type="submit" class="btn-intranet btn-full">
+                        <i class="fa-solid fa-paper-plane"></i> Registrar Estudiante en el Padrón Institucional
+                    </button>
+                </form>
+
+                <div id="msgMatricula" class="alert-banner"></div>
+            </div>
+
+            <!-- EMISIÓN DE CONSTANCIAS DIGITALES Y PADRÓN EN VIVO -->
+            <div>
+                <div class="panel-card">
+                    <h3><span><i class="fa-solid fa-award"></i> Emisión de Constancias y Libretas</span></h3>
+                    <div class="input-group">
+                        <label>Seleccionar Alumno del Padrón</label>
+                        <select id="selectAlumnoConstancia"></select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Tipo de Documento Oficial</label>
+                        <select id="tipoDocumento">
+                            <option value="CONSTANCIA DE MATRÍCULA">Constancia de Matrícula Oficial</option>
+                            <option value="CONSTANCIA DE ESTUDIOS">Constancia de Estudios Regular</option>
+                            <option value="CONSTANCIA DE NO ADEUDO">Constancia de No Adeudo de Pensiones</option>
+                        </select>
+                    </div>
+
+                    <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+                        <button onclick="emitirConstancia()" class="btn-action" style="flex:1; justify-content:center; padding:0.7rem;">
+                            <i class="fa-solid fa-print"></i> Imprimir Constancia
+                        </button>
+                        <button onclick="imprimirLibretaSeleccionada()" class="btn-action btn-yape" style="flex:1; justify-content:center; padding:0.7rem;">
+                            <i class="fa-solid fa-file-lines"></i> Imprimir Libreta
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel-card">
+                    <h3><span><i class="fa-solid fa-list-check"></i> Padrón de Estudiantes Matriculados</span></h3>
+                    <div class="table-responsive">
+                        <table class="school-table">
+                            <thead>
+                                <tr>
+                                    <th>Estudiante / Apoderado</th>
+                                    <th>Grado</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyMatriculas"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/database.js"></script>
+    <script>
+        function renderMatriculas() {
+            const db = getDB();
+            const tbody = document.getElementById('tbodyMatriculas');
+            const select = document.getElementById('selectAlumnoConstancia');
+            tbody.innerHTML = '';
+            select.innerHTML = '';
+
+            db.estudiantes.forEach(est => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${est.nombre}</strong><br><small>DNI: ${est.dni} • Apod: ${est.apoderado}</small></td>
+                        <td>${est.grado}</td>
+                        <td><span class="badge badge-paid">Matriculado</span></td>
+                    </tr>
+                `;
+                select.innerHTML += `<option value="${est.dni}">${est.nombre} (${est.grado})</option>`;
+            });
+        }
+
+        function registrarMatriculaReal(e) {
+            e.preventDefault();
+            const db = getDB();
+            const nombre = document.getElementById('estNombre').value;
+            const dni = document.getElementById('estDni').value;
+            const grado = document.getElementById('estGrado').value;
+            const apoderado = document.getElementById('apoNombre').value;
+            const celular = document.getElementById('apoCelular').value;
+            const estadoPension = document.getElementById('estEstadoPension').value;
+
+            db.estudiantes.unshift({
+                dni,
+                nombre,
+                grado,
+                apoderado,
+                celular,
+                asistencia: "P",
+                comunicacion: "A",
+                matematica: "A",
+                personal: "A",
+                ciencia: "A",
+                tutoria: "Estudiante incorporado satisfactoriamente al grupo reducido del aula.",
+                psicologia: "Evaluación diagnóstica de bienvenida completada favorablemente.",
+                estadoPension: estadoPension,
+                operacionYape: estadoPension === "Conciliado" ? "Yape #8910452" : "Pendiente de pago",
+                montoPension: 310
+            });
+
+            saveDB(db);
+            renderMatriculas();
+
+            const msg = document.getElementById('msgMatricula');
+            msg.style.display = 'block';
+            msg.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>${nombre}</strong> ha sido matriculado(a). Ya figura en el Aula Docente, en el Portal Familiar y en Tesorería.`;
+            document.getElementById('formMatricula').reset();
+        }
+
+        function imprimirLibretaSeleccionada() {
+            const dni = document.getElementById('selectAlumnoConstancia').value;
+            imprimirLibretaOficial(dni);
+        }
+
+        function emitirConstancia() {
+            const dni = document.getElementById('selectAlumnoConstancia').value;
+            const db = getDB();
+            const est = db.estudiantes.find(e => e.dni === dni) || db.estudiantes[0];
+            const tipo = document.getElementById('tipoDocumento').value;
+            const fecha = new Date().toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric' });
+
+            const ventana = window.open('', '_blank', 'width=800,height=700');
+            ventana.document.write(`
+                <html>
+                <head>
+                    <title>${tipo} - I.E.P. La Merced</title>
+                    <style>
+                        body { font-family: Georgia, serif; padding: 50px; color: #111; line-height: 1.8; }
+                        .header { text-align: center; border-bottom: 3px double #7c1623; padding-bottom: 15px; margin-bottom: 35px; }
+                        .header h2 { margin: 0; color: #7c1623; }
+                        .header p { margin: 3px 0; font-size: 13px; color: #444; }
+                        h1 { text-align: center; text-decoration: underline; font-size: 22px; margin: 30px 0; }
+                        .content { font-size: 16px; text-align: justify; margin: 30px 0; }
+                        .firma { margin-top: 90px; text-align: center; }
+                        .firma-linea { width: 260px; border-top: 1px solid #000; margin: 0 auto 5px; }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h2>INSTITUCIÓN EDUCATIVA PARTICULAR "LA MERCED"</h2>
+                        <p>Corporación Educativa La Merced S.R.L. • RUC: 20601528631</p>
+                        <p>Av. El Triunfo N.° 1250, Mz. I Lote 18 – Villa María del Triunfo | UGEL 01 • Cód. Modular: 1778091</p>
+                    </div>
+                    <h1>${tipo}</h1>
+                    <div class="content">
+                        <p>El Director de la <strong>Institución Educativa Particular "La Merced"</strong> de Villa María del Triunfo, que suscribe, deja constancia que:</p>
+                        <p style="text-align:center; font-size:19px;"><strong>${est.nombre.toUpperCase()}</strong></p>
+                        <p>Identificado(a) con DNI N.° <strong>${est.dni}</strong>, se encuentra debidamente matriculado(a) en nuestra institución educativa en el nivel y grado correspondiente a: <strong>${est.grado}</strong> (Turno Mañana), conforme a las nóminas oficiales del sistema SIAGIE del Ministerio de Educación.</p>
+                        <p>Se expide la presente constancia a solicitud del padre de familia o apoderado (${est.apoderado}) para los fines que estime conveniente.</p>
+                        <p style="text-align:right; margin-top:40px;">Villa María del Triunfo, ${fecha}.</p>
+                    </div>
+                    <div class="firma">
+                        <div class="firma-linea"></div>
+                        <strong>Prof. Carlos Percy Gálvez Castro</strong><br>
+                        Director de la I.E.P. La Merced
+                    </div>
+                    <script>window.print();<\/script>
+                </body>
+                </html>
+            `);
+            ventana.document.close();
+        }
+
+        renderMatriculas();
+    </script>
+</body>
+</html>

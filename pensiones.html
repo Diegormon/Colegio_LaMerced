@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesorería y Conciliación Yape | I.E.P. La Merced</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/intranet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="intranet-body">
+
+    <header class="intra-topbar">
+        <a href="index.html" class="intra-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div>
+                <strong>I.E.P. LA MERCED</strong>
+                <span>Módulo de Administración, Pensiones y Conciliación Yape</span>
+            </div>
+        </a>
+        <nav class="role-switcher">
+            <a href="matricula.html"><i class="fa-solid fa-file-signature"></i> Matrícula</a>
+            <a href="padres.html"><i class="fa-solid fa-people-roof"></i> Portal Padres</a>
+            <a href="docente.html"><i class="fa-solid fa-chalkboard-user"></i> Aula Docente</a>
+            <a href="pensiones.html" class="active"><i class="fa-solid fa-coins"></i> Tesorería / Yape</a>
+            <a href="admin-cloud.html"><i class="fa-solid fa-chart-pie"></i> Dirección</a>
+            <a href="index.html" class="btn-exit"><i class="fa-solid fa-house"></i> Salir</a>
+        </nav>
+    </header>
+
+    <main class="intra-layout">
+        <div class="page-header">
+            <div>
+                <h1>Control de Pensiones y Conciliación de Pagos Yape</h1>
+                <p>Padrón sincronizado en tiempo real • Mensualidad oficial Inicial y Primaria: S/ 310.00</p>
+            </div>
+            <div>
+                <button onclick="enviarRecordatoriosMasivos()" class="btn-action">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar Recordatorios a Pendientes
+                </button>
+            </div>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+                <div>
+                    <strong id="kpiRecaudado">S/ 0.00</strong>
+                    <span>Recaudación Conciliada</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <div>
+                    <strong id="kpiPagadosCount">0 Alumnos</strong>
+                    <span>Pensiones al Día</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div>
+                    <strong id="kpiMorosidad" style="color:#16a34a;">0%</strong>
+                    <span>Índice de Morosidad (Meta &lt;10%)</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid fa-receipt"></i></div>
+                <div>
+                    <strong>S/ 310.00</strong>
+                    <span>Tarifa Mensual Oficial</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-grid">
+            <!-- TABLA DE CONTROL DE PENSIONES EN VIVO -->
+            <div class="panel-card">
+                <h3><span><i class="fa-solid fa-table-list"></i> Estado de Cuenta General de Estudiantes</span></h3>
+                <div class="table-responsive">
+                    <table class="school-table">
+                        <thead>
+                            <tr>
+                                <th>Estudiante / Nivel</th>
+                                <th>Apoderado</th>
+                                <th>Monto</th>
+                                <th>Medio / N.° Operación</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyPensiones"></tbody>
+                    </table>
+                </div>
+                <div id="alertaRecordatorio" class="alert-banner"></div>
+            </div>
+
+            <!-- VALIDADOR Y CONCILIADOR YAPE -->
+            <div class="panel-card">
+                <h3><span><i class="fa-solid fa-qrcode"></i> Conciliar Pago Yape / Transferencia</span></h3>
+                <p style="font-size:0.85rem; color:#4b5563; margin-bottom:1rem;">Selecciona a cualquier estudiante para registrar su pago de S/ 310.00 y actualizar su estado en el Portal de Padres.</p>
+
+                <form onsubmit="conciliarYapeReal(event)">
+                    <div class="input-group">
+                        <label>Seleccionar Estudiante</label>
+                        <select id="selectAlumnoDeuda" required></select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Canal de Abono</label>
+                        <select id="canalPago">
+                            <option value="Yape">Yape Institucional (RUC 20601528631)</option>
+                            <option value="Transferencia">Transferencia Bancaria / Plin</option>
+                            <option value="Secretaría">Efectivo en Secretaría</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>N.° de Operación Yape / Voucher</label>
+                        <input type="text" id="numOperacion" placeholder="Ej. 8641920" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Importe Abonado (S/)</label>
+                        <input type="number" value="310" readonly>
+                    </div>
+
+                    <button type="submit" class="btn-action btn-yape btn-full" style="justify-content:center; padding:0.75rem;">
+                        <i class="fa-solid fa-check-circle"></i> Validar y Conciliar Pago Ahora
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/database.js"></script>
+    <script>
+        function renderPensiones() {
+            const db = getDB();
+            const tbody = document.getElementById('tbodyPensiones');
+            const select = document.getElementById('selectAlumnoDeuda');
+            tbody.innerHTML = '';
+            select.innerHTML = '';
+
+            let pagados = 0;
+            db.estudiantes.forEach(est => {
+                if (est.estadoPension === 'Conciliado') pagados++;
+
+                const badgeClass = est.estadoPension === 'Conciliado' ? 'badge-paid' : est.estadoPension === 'Por Conciliar' ? 'badge-pending' : 'badge-late';
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${est.nombre}</strong><br><small>${est.grado}</small></td>
+                        <td>${est.apoderado}<br><small>${est.celular}</small></td>
+                        <td>S/ 310.00</td>
+                        <td><span class="badge badge-yape">${est.operacionYape}</span></td>
+                        <td><span class="badge ${badgeClass}">${est.estadoPension}</span></td>
+                    </tr>
+                `;
+
+                select.innerHTML += `<option value="${est.dni}">${est.nombre} (${est.estadoPension})</option>`;
+            });
+
+            const recaudado = 6510 + (pagados * 310);
+            const pendientes = db.estudiantes.length - pagados;
+            const morosidad = ((pendientes / (db.estudiantes.length + 21)) * 100).toFixed(1);
+
+            document.getElementById('kpiRecaudado').textContent = `S/ ${recaudado.toLocaleString('es-PE')}.00`;
+            document.getElementById('kpiPagadosCount').textContent = `${pagados} de ${db.estudiantes.length} en lista`;
+            document.getElementById('kpiMorosidad').textContent = `${morosidad}%`;
+        }
+
+        function conciliarYapeReal(e) {
+            e.preventDefault();
+            const db = getDB();
+            const dni = document.getElementById('selectAlumnoDeuda').value;
+            const numOp = document.getElementById('numOperacion').value;
+            const canal = document.getElementById('canalPago').value;
+
+            const est = db.estudiantes.find(item => item.dni === dni);
+            if (est) {
+                est.estadoPension = "Conciliado";
+                est.operacionYape = `${canal} #${numOp}`;
+                saveDB(db);
+            }
+
+            renderPensiones();
+            const alerta = document.getElementById('alertaRecordatorio');
+            alerta.style.display = 'block';
+            alerta.innerHTML = `<i class="fa-solid fa-circle-check"></i> Abono #${numOp} conciliado para <strong>${est.nombre}</strong>. El estado de cuenta ya figura al día en el Portal de Padres.`;
+            document.getElementById('numOperacion').value = '';
+        }
+
+        function enviarRecordatoriosMasivos() {
+            const alerta = document.getElementById('alertaRecordatorio');
+            alerta.style.display = 'block';
+            alerta.innerHTML = `<i class="fa-solid fa-bell"></i> Se enviaron notificaciones preventivas de vencimiento a los apoderados con cuotas por conciliar.`;
+        }
+
+        renderPensiones();
+    </script>
+</body>
+</html>

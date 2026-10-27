@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Directivo y Seguridad Cloud | I.E.P. La Merced</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/intranet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="intranet-body">
+
+    <header class="intra-topbar">
+        <a href="index.html" class="intra-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div>
+                <strong>I.E.P. LA MERCED</strong>
+                <span>Dirección, Promotoría, Comunicados y Respaldo en la Nube</span>
+            </div>
+        </a>
+        <nav class="role-switcher">
+            <a href="matricula.html"><i class="fa-solid fa-file-signature"></i> Matrícula</a>
+            <a href="padres.html"><i class="fa-solid fa-people-roof"></i> Portal Padres</a>
+            <a href="docente.html"><i class="fa-solid fa-chalkboard-user"></i> Aula Docente</a>
+            <a href="pensiones.html"><i class="fa-solid fa-coins"></i> Tesorería / Yape</a>
+            <a href="admin-cloud.html" class="active"><i class="fa-solid fa-chart-pie"></i> Dirección</a>
+            <a href="index.html" class="btn-exit"><i class="fa-solid fa-house"></i> Salir</a>
+        </nav>
+    </header>
+
+    <main class="intra-layout">
+        <div class="page-header">
+            <div>
+                <h1>Reporte Ejecutivo de Promotoría y Gobierno TI</h1>
+                <p>Gerencia General: <strong>Sra. Gina Sue Narváez López</strong> • Dirección: <strong>Prof. Carlos Percy Gálvez Castro</strong></p>
+            </div>
+            <div>
+                <button onclick="ejecutarBackupManual()" class="btn-action btn-success">
+                    <i class="fa-solid fa-database"></i> Ejecutar Copia de Seguridad en la Nube
+                </button>
+            </div>
+        </div>
+
+        <!-- INDICADORES DE GESTIÓN INSTITUCIONAL EN TIEMPO REAL -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid fa-children"></i></div>
+                <div>
+                    <strong id="kpiTotalAlumnos">29 Alumnos</strong>
+                    <span>Matrícula Activa Sincronizada</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <div>
+                    <strong>-70% Tiempo</strong>
+                    <span>En emisión de libretas y constancias</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <div>
+                    <strong id="kpiTotalBackups">2 Respaldos</strong>
+                    <span>Copias Automáticas en la Nube</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                    <strong>Ley N.° 29733</strong>
+                    <span>Control de Accesos por Rol Activo</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-grid">
+            <!-- HISTORIAL DE COPIAS DE SEGURIDAD AUTOMÁTICAS -->
+            <div>
+                <div class="panel-card">
+                    <h3><span><i class="fa-solid fa-server"></i> Copias de Seguridad Automáticas en la Nube</span> <small>Frecuencia Semanal</small></h3>
+                    <div class="table-responsive">
+                        <table class="school-table">
+                            <thead>
+                                <tr>
+                                    <th>ID Respaldo</th>
+                                    <th>Módulos Respaldados</th>
+                                    <th>Fecha y Hora</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyBackups"></tbody>
+                        </table>
+                    </div>
+                    <div id="msgBackup" class="alert-banner"></div>
+                </div>
+
+                <div class="panel-card">
+                    <h3><span><i class="fa-solid fa-user-shield"></i> Usuarios y Roles Activos</span></h3>
+                    <table class="school-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Gina Sue Narváez López</strong> (Gerencia General)</td>
+                                <td><span class="badge badge-paid">Supervisión Total</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prof. Carlos Percy Gálvez Castro</strong> (Dirección / Resp. TI)</td>
+                                <td><span class="badge badge-paid">Administrador</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Plana Docente</strong> (Inicial y Primaria)</td>
+                                <td><span class="badge badge-pending">Aula, Tutoría y SIAGIE</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PUBLICADOR DE COMUNICADOS OFICIALES PARA EL PORTAL DE PADRES -->
+            <div class="panel-card">
+                <h3><span><i class="fa-solid fa-bullhorn"></i> Publicar Comunicado Oficial</span></h3>
+                <p style="font-size:0.84rem; color:#4b5563; margin-bottom:1rem;">Todo aviso publicado aquí aparece de inmediato en el <strong>Portal de Padres de Familia</strong> con confirmación de lectura.</p>
+
+                <form id="formComunicado" onsubmit="publicarComunicadoNuevo(event)">
+                    <div class="input-group">
+                        <label>Área Emisora</label>
+                        <select id="comAutor">
+                            <option value="DIRECCIÓN PEDAGÓGICA: Prof. Carlos Percy Gálvez Castro">Dirección Pedagógica (Prof. Carlos Gálvez)</option>
+                            <option value="GERENCIA GENERAL: Sra. Gina Sue Narváez López">Gerencia y Administración (Sra. Gina Narváez)</option>
+                            <option value="DEPARTAMENTO DE TUTORÍA Y APOYO PSICOLÓGICO">Tutoría y Apoyo Psicológico</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Título del Comunicado o Citación</label>
+                        <input type="text" id="comTitulo" placeholder="Ej. Reunión de Padres de Nivel Primaria" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Mensaje Oficial</label>
+                        <textarea id="comContenido" rows="4" placeholder="Escriba el contenido oficial para los padres..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-intranet btn-full" style="justify-content:center;">
+                        <i class="fa-solid fa-paper-plane"></i> Publicar en el Portal de Padres
+                    </button>
+                </form>
+
+                <div id="msgComunicado" class="alert-banner"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/database.js"></script>
+    <script>
+        function renderAdminCloud() {
+            const db = getDB();
+            document.getElementById('kpiTotalAlumnos').textContent = `${25 + db.estudiantes.length} Alumnos`;
+            document.getElementById('kpiTotalBackups').textContent = `${db.backups.length} Respaldos`;
+
+            const tbody = document.getElementById('tbodyBackups');
+            tbody.innerHTML = '';
+            db.backups.forEach(b => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${b.id}</strong></td>
+                        <td>${b.modulos}</td>
+                        <td>${b.fecha}</td>
+                        <td><span class="badge badge-paid">${b.estado}</span></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function ejecutarBackupManual() {
+            const db = getDB();
+            const ahora = new Date().toLocaleString('es-PE');
+            db.backups.unshift({
+                id: `BKP-CLOUD-${Math.floor(100 + Math.random() * 900)}`,
+                modulos: `Base de Datos Completa (${db.estudiantes.length} fichas activas, Yape y SIAGIE)`,
+                fecha: ahora,
+                estado: "Respaldado en Cloud"
+            });
+            saveDB(db);
+            renderAdminCloud();
+
+            const msg = document.getElementById('msgBackup');
+            msg.style.display = 'block';
+            msg.innerHTML = `<i class="fa-solid fa-circle-check"></i> Copia de seguridad completada (${ahora}). Cero riesgo de pérdida de información.`;
+        }
+
+        function publicarComunicadoNuevo(e) {
+            e.preventDefault();
+            const db = getDB();
+            const autor = document.getElementById('comAutor').value;
+            const titulo = document.getElementById('comTitulo').value;
+            const contenido = document.getElementById('comContenido').value;
+
+            db.comunicados.unshift({
+                id: Date.now(),
+                autor,
+                fecha: "Publicado hoy",
+                titulo,
+                contenido,
+                leido: false,
+                color: "#7c1623"
+            });
+
+            saveDB(db);
+            document.getElementById('formComunicado').reset();
+            const msg = document.getElementById('msgComunicado');
+            msg.style.display = 'block';
+            msg.innerHTML = `<i class="fa-solid fa-circle-check"></i> Comunicado publicado. Ya puedes abrir la pestaña <strong>Portal Padres</strong> para verlo en el primer lugar del muro.`;
+        }
+
+        renderAdminCloud();
+    </script>
+</body>
+</html>

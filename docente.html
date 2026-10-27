@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet Docente, Tutoría y SIAGIE | I.E.P. La Merced</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/intranet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="intranet-body">
+
+    <header class="intra-topbar">
+        <a href="index.html" class="intra-brand">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div>
+                <strong>I.E.P. LA MERCED</strong>
+                <span>Intranet Docente • Asistencia, Notas, Tutoría y SIAGIE</span>
+            </div>
+        </a>
+        <nav class="role-switcher">
+            <a href="matricula.html"><i class="fa-solid fa-file-signature"></i> Matrícula</a>
+            <a href="padres.html"><i class="fa-solid fa-people-roof"></i> Portal Padres</a>
+            <a href="docente.html" class="active"><i class="fa-solid fa-chalkboard-user"></i> Aula Docente</a>
+            <a href="pensiones.html"><i class="fa-solid fa-coins"></i> Tesorería / Yape</a>
+            <a href="admin-cloud.html"><i class="fa-solid fa-chart-pie"></i> Dirección</a>
+            <a href="index.html" class="btn-exit"><i class="fa-solid fa-house"></i> Salir</a>
+        </nav>
+    </header>
+
+    <main class="intra-layout">
+        <div class="page-header">
+            <div>
+                <h1>Registro Académico, Tutoría y Orientación (Cód. 1778091)</h1>
+                <p>Docente: <strong>Prof. Carlos Percy Gálvez Castro</strong> • Todo cambio se refleja al instante en el Portal de Padres.</p>
+            </div>
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+                <button onclick="guardarCambiosDocente()" class="btn-action btn-success">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Guardar Notas y Tutoría en la Nube
+                </button>
+                <button onclick="exportarSIAGIE()" class="btn-action">
+                    <i class="fa-solid fa-file-csv"></i> Exportar Nómina Oficial SIAGIE (MINEDU)
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-card">
+            <h3>
+                <span><i class="fa-solid fa-users-line"></i> Nómina de Estudiantes • Evaluación por Competencias y Apoyo Psicopedagógico</span>
+                <small>Escala CNEB: AD • A • B • C</small>
+            </h3>
+
+            <div class="table-responsive">
+                <table class="school-table" id="tablaDocente">
+                    <thead>
+                        <tr>
+                            <th>Estudiante / Grado</th>
+                            <th>Asistencia</th>
+                            <th>Comunicación</th>
+                            <th>Matemática</th>
+                            <th>Seguimiento Tutorial</th>
+                            <th>Apoyo Psicológico</th>
+                            <th>Libreta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyDocente"></tbody>
+                </table>
+            </div>
+
+            <div id="msgDocente" class="alert-banner"></div>
+        </div>
+    </main>
+
+    <script src="js/database.js"></script>
+    <script>
+        function renderAulaDocente() {
+            const db = getDB();
+            const tbody = document.getElementById('tbodyDocente');
+            tbody.innerHTML = '';
+
+            db.estudiantes.forEach((est, idx) => {
+                tbody.innerHTML += `
+                    <tr data-dni="${est.dni}">
+                        <td><strong>${est.nombre}</strong><br><small>DNI: ${est.dni} • ${est.grado}</small></td>
+                        <td>
+                            <select class="in-asist" style="padding:0.3rem; border-radius:4px;">
+                                <option value="P" ${est.asistencia === 'P' ? 'selected' : ''}>Puntual (P)</option>
+                                <option value="T" ${est.asistencia === 'T' ? 'selected' : ''}>Tardanza (T)</option>
+                                <option value="F" ${est.asistencia === 'F' ? 'selected' : ''}>Falta Justif.</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="in-com" style="padding:0.3rem; border-radius:4px; font-weight:700;">
+                                <option value="AD" ${est.comunicacion === 'AD' ? 'selected' : ''}>AD</option>
+                                <option value="A" ${est.comunicacion === 'A' ? 'selected' : ''}>A</option>
+                                <option value="B" ${est.comunicacion === 'B' ? 'selected' : ''}>B</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="in-mat" style="padding:0.3rem; border-radius:4px; font-weight:700;">
+                                <option value="AD" ${est.matematica === 'AD' ? 'selected' : ''}>AD</option>
+                                <option value="A" ${est.matematica === 'A' ? 'selected' : ''}>A</option>
+                                <option value="B" ${est.matematica === 'B' ? 'selected' : ''}>B</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" class="in-tut" value="${est.tutoria}" style="width:100%; min-width:170px; padding:0.35rem; border:1px solid #cbd5e1; border-radius:4px;">
+                        </td>
+                        <td>
+                            <input type="text" class="in-psi" value="${est.psicologia}" style="width:100%; min-width:170px; padding:0.35rem; border:1px solid #cbd5e1; border-radius:4px;">
+                        </td>
+                        <td>
+                            <button onclick="imprimirLibretaOficial('${est.dni}')" class="btn-action" title="Imprimir Libreta Oficial">
+                                <i class="fa-solid fa-print"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function guardarCambiosDocente() {
+            const db = getDB();
+            const filas = document.querySelectorAll('#tbodyDocente tr');
+
+            filas.forEach(tr => {
+                const dni = tr.getAttribute('data-dni');
+                const est = db.estudiantes.find(e => e.dni === dni);
+                if (est) {
+                    est.asistencia = tr.querySelector('.in-asist').value;
+                    est.comunicacion = tr.querySelector('.in-com').value;
+                    est.matematica = tr.querySelector('.in-mat').value;
+                    est.tutoria = tr.querySelector('.in-tut').value;
+                    est.psicologia = tr.querySelector('.in-psi').value;
+                }
+            });
+
+            saveDB(db);
+            const msg = document.getElementById('msgDocente');
+            msg.style.display = 'block';
+            msg.innerHTML = `<i class="fa-solid fa-circle-check"></i> Calificaciones, asistencia diaria y fichas de tutoría/psicología actualizadas en tiempo real para el Portal de Padres.`;
+        }
+
+        function exportarSIAGIE() {
+            guardarCambiosDocente();
+            const db = getDB();
+            let csv = "DNI_ESTUDIANTE,APELLIDOS_NOMBRES,NIVEL_GRADO,ASISTENCIA,COMUNICACION,MATEMATICA,TUTORIA_PSICOLOGIA,CODIGO_MODULAR\n";
+            db.estudiantes.forEach(e => {
+                csv += `${e.dni},"${e.nombre}","${e.grado}",${e.asistencia},${e.comunicacion},${e.matematica},"${e.tutoria}",SIAGIE_1778091_UGEL01\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Consolidado_SIAGIE_IEP_LaMerced_1778091.csv';
+            a.click();
+        }
+
+        renderAulaDocente();
+    </script>
+</body>
+</html>
